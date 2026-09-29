@@ -34,7 +34,22 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
+      - name: Subir a API
+        run: PORT=3001 npm start &
+        env:
+          PORT: 3001
+
+      - name: Esperar a API ficar disponível
+        run: npx wait-on http://localhost:3001
+
       - name: Executar testes
         run: npm test
         env:
+          ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+          ALUNO_EMAIL: ${{ secrets.ALUNO_EMAIL }}
+          ALUNO_PASSWORD: ${{ secrets.ALUNO_PASSWORD }}
+          ALUNO_ID: ${{ secrets.ALUNO_ID }}
+          ADMIN_ID: ${{ secrets.ADMIN_ID }}
           MONGODB_URI: mongodb://127.0.0.1:27017/gestao-de-alunos-test
+          BASE_URL: ${{ secrets.BASE_URL }}
