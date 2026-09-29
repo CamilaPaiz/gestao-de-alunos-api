@@ -1,5 +1,4 @@
 import { api } from './api.js';
-import 'dotenv/config';
 
 export async function loginUsuario(emailUser, passUser) {
     const loginResposta = await api()
@@ -10,6 +9,9 @@ export async function loginUsuario(emailUser, passUser) {
             senha: passUser
         });
 
-    return loginResposta.body.token;
+    return loginResposta;
 }
 
+export async function getTokenUsuario(loginResposta) {
+    return loginResposta.body.token;
+}

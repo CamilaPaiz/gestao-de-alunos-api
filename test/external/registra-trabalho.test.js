@@ -1,7 +1,7 @@
 import request from "supertest";
 import { expect } from "chai";
 import "dotenv/config";
-import { loginUsuario } from "../helpers/loginUsuario.js";
+import { getTokenUsuario, loginUsuario } from "../helpers/loginUsuario.js";
 import disciplinas from "../fixtures/disciplinas.json" assert { type: "json" };
 import { api } from "../helpers/api.js";
 
@@ -9,10 +9,11 @@ describe("POST /api/alunos/:alunoId/trabalhos", () => {
   let tokenAluno;
 
   beforeEach(async () => {
-    tokenAluno = await loginUsuario(
+   const  respostaLoginAluno = await loginUsuario(
       process.env.ALUNO_EMAIL,
-      process.env.ALUNO_PASSWORD,
+      process.env.ALUNO_PASSWORD
     );
+    tokenAluno = await getTokenUsuario(respostaLoginAluno);
   });
 
   it("aluno deve registrar um trabalho com sucesso", async () => {

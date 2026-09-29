@@ -1,18 +1,21 @@
 import request from "supertest";
 import { expect } from "chai";
 import "dotenv/config";
-import { loginUsuario } from "../helpers/loginUsuario.js";
+import { getTokenUsuario,loginUsuario } from "../helpers/loginUsuario.js";
 import alunos from "../fixtures/usuarios.json" assert { type: "json" };
 
 describe("POST /api/admin/alunos", () => {
   let tokenAdmin;
 
   beforeEach(async () => {
-    tokenAdmin = await loginUsuario(
-      process.env.ADMIN_EMAIL,
-      process.env.ADMIN_PASSWORD,
+   const respostaLoginAdmin =
+      await loginUsuario(
+        process.env.ADMIN_EMAIL,
+        process.env.ADMIN_PASSWORD,
     );
+    tokenAdmin = await getTokenUsuario(respostaLoginAdmin);
   });
+  
 
   it("deve cadastrar alunos com dados válidos", async () => {
     const suffix = Date.now();
