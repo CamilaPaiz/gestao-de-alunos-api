@@ -1,0 +1,20 @@
+[
+  {
+    "nome": "Maria Teste",
+    "emailBase": "maria.teste",
+    "matriculaBase": "2024109",
+    "senha": "123457"
+  },
+  {
+    "nome": "Joao Silva",
+    "emailBase": "joao.silva",
+    "matriculaBase": "2024110",
+    "senha": "123457"
+  },
+  {
+    "nome": "Carla Souza",
+    "emailBase": "carla.souza",
+    "matriculaBase": "2024111",
+    "senha": "123457"
+  }
+]
