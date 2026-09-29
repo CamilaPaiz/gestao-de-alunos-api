@@ -1,0 +1,12 @@
+[
+  {
+    "disciplinaId": "disciplina-matematica",
+    "titulo": "Lista de Exercícios 1",
+    "descricao": "Resolução dos exercícios de 1 a 20 do capítulo 1."
+  },
+  {
+    "disciplinaId": "disciplina-fisica",
+    "titulo": "Trabalho de Física",
+    "descricao": "Experimento sobre leis de Newton."
+  }
+]
